@@ -40,11 +40,17 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Paralax background
+    uniqueID: 3939652609
+    locked: 0
   - name: Background
     uniqueID: 2339399919
     locked: 0
   - name: Players
     uniqueID: 2177352939
+    locked: 0
+  - name: Water
+    uniqueID: 2802519639
     locked: 0
   - name: Default
     uniqueID: 0
