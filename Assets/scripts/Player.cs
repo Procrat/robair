@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -12,15 +13,22 @@ public class Player : MonoBehaviour
     public LayerMask whatIsGround;
 
     private Rigidbody2D body;
+    private PlayerInput playerInput;
 
     void Start ()
     {
         body = GetComponent<Rigidbody2D> ();
+        playerInput = GetComponent<PlayerInput>();
+    }
+
+    public void OnMove () {
+        MoveLeft();
+        print(playerInput);
     }
 
     void FixedUpdate ()
     {
-        HandleInput ();
+        // HandleInput ();
     }
 
     private void HandleInput ()
