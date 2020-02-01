@@ -11,6 +11,10 @@ public class Player : MonoBehaviour
     public GameObject feet;
     public LayerMask whatIsGround;
 
+    public KeyCode left;
+    public KeyCode right;
+    public KeyCode jump;
+
     private Rigidbody2D body;
 
     void Start ()
@@ -30,13 +34,13 @@ public class Player : MonoBehaviour
             Application.Quit ();
         }
 
-        if (Input.GetKey (KeyCode.RightArrow)) {
+        if (Input.GetKey (right)) {
             MoveRight ();
-        } else if (Input.GetKey (KeyCode.LeftArrow)) {
+        } else if (Input.GetKey (left)) {
             MoveLeft ();
         }
 
-        if (Input.GetKey (KeyCode.UpArrow)) {
+        if (Input.GetKey (jump)) {
             Jump ();
         }
     }
