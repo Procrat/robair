@@ -45,7 +45,7 @@ public class ShootingEnemy : MonoBehaviour {
     {
         Rigidbody2D projectileInstance;
         projectileInstance = Instantiate(projectile, Launcher.position, Launcher.rotation) as Rigidbody2D;
-        projectileInstance.AddForce(Vector2.left * projectileSpeed);
+        projectileInstance.velocity = Vector2.left * projectileSpeed;
     }
 
     // Update is called once per frame
