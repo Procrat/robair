@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class Player : MonoBehaviour
     private Rigidbody2D body;
     private float laserDamage = 0.15f;
     private float enemyDamage = 0.25f;
+
+    private Vector2 movementInput;
 
 
     public void takeDamage(float damage)
@@ -49,31 +52,36 @@ public class Player : MonoBehaviour
 
     private void HandleInput ()
     {
-        if (Input.GetKey (KeyCode.Escape) || Input.GetKey (KeyCode.Q)) {
-            Debug.Log ("Quitting.");
-            Application.Quit ();
-        }
+        Move(new Vector2(movementInput.x, 0));
 
-        if (Input.GetKey (right)) {
-            MoveRight ();
-        } else if (Input.GetKey (left)) {
-            MoveLeft ();
-        }
+        //Move(PlayerInput.actions["Move"].ReadValue<Vector2>());
 
-        if (Input.GetKey (jump)) {
-            Jump ();
-        }
+        //if (Input.GetKey (KeyCode.Escape) || Input.GetKey (KeyCode.Q)) {
+        //    Debug.Log ("Quitting.");
+        //    Application.Quit ();
+        //}
+
+
+        //if (Input.GetKey (right)) {
+        //    MoveRight ();
+        //} else if (Input.GetKey (left)) {
+        //    MoveLeft ();
+        //}
+
+        //if (Input.GetKey (jump)) {
+        //    Jump ();
+        //}
     }
 
-    private void MoveLeft ()
-    {
-        Move (Vector2.left);
-    }
+    //private void MoveLeft ()
+    //{
+    //    Move (Vector2.left);
+    //}
 
-    private void MoveRight ()
-    {
-        Move (Vector2.right);
-    }
+    //private void MoveRight ()
+    //{
+    //    Move (Vector2.right);
+    //}
 
     private void Move (Vector2 translationVector)
     {
@@ -91,5 +99,17 @@ public class Player : MonoBehaviour
     {
         var feetRect = new Rect (feet.transform.position.x, feet.transform.position.y, feetWidth, 0.1f);
         return Physics2D.OverlapArea (feetRect.min, feetRect.max, whatIsGround);
+    }
+
+    // New Input System: OnMove message
+    private void OnMove(InputValue value)
+    {
+        movementInput = value.Get<Vector2>();
+    }
+
+    // New Input System: OnJump message
+    private void OnJump(InputValue value)
+    {
+        Jump();
     }
 }
