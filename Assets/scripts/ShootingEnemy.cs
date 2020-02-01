@@ -4,8 +4,13 @@ using System.Collections;
 public class ShootingEnemy : MonoBehaviour {
 
     private Rigidbody2D body;
+    public Rigidbody2D projectile;
+
+    public Transform Launcher;
 
     private Vector2[] actions;
+
+    public Vector2 projectileSpeed;
 
     public float jumpSpeed;
     public float jumpProb;
@@ -36,13 +41,20 @@ public class ShootingEnemy : MonoBehaviour {
         }
     }
 
+    private void Shoot()
+    {
+        Rigidbody2D projectileInstance;
+        projectileInstance = Instantiate(projectile, Launcher.position, Launcher.rotation) as Rigidbody2D;
+        projectileInstance.AddForce(Vector2.left * projectileSpeed);
+    }
+
     // Update is called once per frame
     void Update () {
-        Debug.Log(isGrounded());
         float randJump = Random.Range(0.0f, 1.0f);
         if(randJump < jumpProb)
         {
             Jump();
         }
+        Shoot();
     }
 }
