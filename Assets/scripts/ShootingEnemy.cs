@@ -10,14 +10,14 @@ public class ShootingEnemy : MonoBehaviour {
 
     private Vector2[] actions;
 
+    public float projectileInterval;
+    private float projectileTime;
     public Vector2 projectileSpeed;
 
     public float jumpSpeed;
     public float jumpProb;
 
     // ground checking - add publics via drag and drop
-    public Transform groundCheck;
-    public float groundCheckRadius;
     public LayerMask whatIsGround;
     public GameObject feet;
     public float feetWidth;
@@ -28,7 +28,7 @@ public class ShootingEnemy : MonoBehaviour {
         body = GetComponent<Rigidbody2D> ();
     }
 
-    private bool isGrounded ()
+    private bool isGrounded()
     {
         var feetRect = new Rect (feet.transform.position.x, feet.transform.position.y, feetWidth, 0.1f);
         return Physics2D.OverlapArea (feetRect.min, feetRect.max, whatIsGround);
@@ -49,12 +49,19 @@ public class ShootingEnemy : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void FixedUpdate () {
         float randJump = Random.Range(0.0f, 1.0f);
         if(randJump < jumpProb)
         {
             Jump();
         }
-        Shoot();
+        projectileTime += Time.fixedDeltaTime;
+        if(projectileTime > projectileInterval)
+        {
+            projectileTime = 0;
+            Shoot();
+        }
     }
+
+
 }

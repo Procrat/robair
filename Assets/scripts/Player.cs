@@ -9,9 +9,29 @@ public class Player : MonoBehaviour
     public float feetWidth;
 
     public GameObject feet;
+    public HealthBar healthBar;
     public LayerMask whatIsGround;
 
     private Rigidbody2D body;
+    private float laserDamage = 0.15f;
+    private float enemyDamage = 0.25f;
+
+
+    public void takeDamage(float damage)
+    {
+        healthBar.subtractHealth(damage);
+    }
+
+    private void OnTriggerEnter2D (Collider2D other) {
+     // Using the tag method.
+     if (other.tag == "Projectile") {
+         takeDamage(laserDamage);
+     }
+     else if(other.tag == "Enemy")
+     {
+         takeDamage(enemyDamage);
+     }
+    }
 
     void Start ()
     {
