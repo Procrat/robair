@@ -24,8 +24,6 @@ public class HealthBar : MonoBehaviour
         sprRenderer.material.SetFloat("_Percent", health);
         sprRenderer.material.SetFloat("y_pos", 0.1f);
         sprRenderer.material.SetFloat("_height", height);
-        Debug.Log(sprRenderer.material.GetFloat("_height"));
-
     }
 
     public void subtractHealth(float sub)

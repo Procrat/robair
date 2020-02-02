@@ -291,7 +291,7 @@ Transform:
   m_GameObject: {fileID: 255108337}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4764952584539402472}
   m_RootOrder: 0
@@ -2214,9 +2214,9 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  field of view: 30
+  orthographic: 1
+  orthographic size: 3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2255,11 +2255,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1512321298}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c65ff0407c4c7648d9d72003bb4d6c, type: 3}
+  m_Script: {fileID: 11500000, guid: 80595e77b5ecbf6b5892f963bc26fbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player1: {fileID: 1562597788}
   player2: {fileID: 1538372319}
+  lowerLeftCorner: {x: -3, y: -1}
 --- !u!1 &1538372319 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6016482973291940088, guid: 99daa2ba60171153688f3e1f04e8728c,
