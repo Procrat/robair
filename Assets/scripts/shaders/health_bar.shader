@@ -20,8 +20,6 @@ Shader "Custom/HealthBar"
 
             sampler2D _MainTex;
             float _Percent;
-            float y_pos;
-            float _height;
 
             struct vertexInput
             {
@@ -43,8 +41,6 @@ Shader "Custom/HealthBar"
                 UNITY_INITIALIZE_OUTPUT(vertexOutput, o);
 
                 o.pos = UnityObjectToClipPos(i.vertex);
-                float4 height_coords = UnityObjectToClipPos(float4(0.0, _height, 0.0, 0.0));
-                _height = height_coords.y;
                 o.texcoord = i.texcoord;
 
                 return o;
@@ -55,32 +51,23 @@ Shader "Custom/HealthBar"
                 fixed4 mainTex = tex2D(_MainTex, i.texcoord);
                 //LOL
 
-                if(i.pos.y <= _height * _Percent)
+                if(_Percent <= 0.65)
                 {
-                    if(_Percent <= 0.65)
-                    {
-                        mainTex.r = 1;
-                        mainTex.g = 0.949;
-                        mainTex.b = 0;
-                    }
-                    if(_Percent <= 0.45)
-                    {
-                        mainTex.r = 1;
-                        mainTex.g = 0.698;
-                        mainTex.b = 0.4;
-                    }
-                    if(_Percent <= 0.25)
-                    {
-                        mainTex.r = 1;
-                        mainTex.g = 0;
-                        mainTex.b = 0;
-                    }
+                    mainTex.r = 1;
+                    mainTex.g = 0.949;
+                    mainTex.b = 0;
                 }
-                else
+                if(_Percent <= 0.45)
                 {
-                    mainTex.r = 0.109;
-                    mainTex.g = 0.168;
-                    mainTex.b = 0.2;
+                    mainTex.r = 1;
+                    mainTex.g = 0.698;
+                    mainTex.b = 0.4;
+                }
+                if(_Percent <= 0.25)
+                {
+                    mainTex.r = 1;
+                    mainTex.g = 0;
+                    mainTex.b = 0;
                 }
                 return mainTex;
             }
