@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 896936387128693773}
   - component: {fileID: 8874909391968486482}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: repairZone
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 5543052573693020006}
   - component: {fileID: 6474325179351846504}
   - component: {fileID: 527430254}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: healthbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,7 +160,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3892233485206410740}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 3892233485646969857}
   - component: {fileID: 2879742716826955236}
   - component: {fileID: 4743480755261140026}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -309,7 +309,7 @@ MonoBehaviour:
   healthBar: {fileID: 527430254}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   otherPlayer: {fileID: 0}
   left: 0
   right: 0

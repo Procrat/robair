@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7731996895372457902}
   - component: {fileID: 3524875176466804230}
   - component: {fileID: 4291158150725870620}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: enemy-stab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3524875177168227037}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2431922909869711328}
   - component: {fileID: 5682265962660426182}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: triggerCollider
   m_TagString: Enemy
   m_Icon: {fileID: 0}
