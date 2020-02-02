@@ -26,6 +26,7 @@ public class ShootingEnemy : EnemyBase {
     // Use this for initialization
     void Start () {
         body = GetComponent<Rigidbody2D> ();
+        animator = gameObject.GetComponent<Animator>();
     }
 
     private bool isGrounded()

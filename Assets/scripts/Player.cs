@@ -168,6 +168,11 @@ public class Player : MonoBehaviour
     private void OnMove(InputValue value)
     {
         movementInput = value.Get<Vector2>();
+        animator.SetBool("IsRunning", true);
+
+        if(movementInput.magnitude == 0){
+          animator.SetBool("IsRunning", false);
+        }
     }
 
     // New Input System: OnJump message

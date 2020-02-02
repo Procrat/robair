@@ -2321,8 +2321,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80595e77b5ecbf6b5892f963bc26fbea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   player1: {fileID: 1562597788}
   player2: {fileID: 1538372319}
   lowerLeftCorner: {x: -3, y: -1}
@@ -2342,8 +2342,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Actions: {fileID: -944628639613478452, guid: bb6575406011e964f9aa213c21bd1834,
     type: 3}
   m_NotificationBehavior: 0
@@ -2373,8 +2373,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f1f12299586fd67b96c6e6b79f339b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1 &1562597788 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6346046949185483823, guid: d7350d954896724958f69a2aa166bcae,
@@ -2391,8 +2391,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Actions: {fileID: -944628639613478452, guid: bb6575406011e964f9aa213c21bd1834,
     type: 3}
   m_NotificationBehavior: 0
@@ -2422,8 +2422,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f1f12299586fd67b96c6e6b79f339b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1001 &1623224315
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2851,47 +2851,47 @@ PrefabInstance:
     - target: {fileID: 6509460014752930161, guid: 7b101977e5e17ac4d93204b508b3a693,
         type: 3}
       propertyPath: healthUpSound1
-      value: 
+      value:
       objectReference: {fileID: 527824808}
     - target: {fileID: 6509460014752930161, guid: 7b101977e5e17ac4d93204b508b3a693,
         type: 3}
       propertyPath: healthUpSound2
-      value: 
+      value:
       objectReference: {fileID: 121248818}
     - target: {fileID: 6509460014752930161, guid: 7b101977e5e17ac4d93204b508b3a693,
         type: 3}
       propertyPath: healthDownSound
-      value: 
+      value:
       objectReference: {fileID: 1830504769}
     - target: {fileID: 6509460014752930161, guid: 7b101977e5e17ac4d93204b508b3a693,
         type: 3}
       propertyPath: laserSound
-      value: 
+      value:
       objectReference: {fileID: 74699915}
     - target: {fileID: 6509460014752930161, guid: 7b101977e5e17ac4d93204b508b3a693,
         type: 3}
       propertyPath: stabSoundLight
-      value: 
+      value:
       objectReference: {fileID: 99504284}
     - target: {fileID: 6509460014752930161, guid: 7b101977e5e17ac4d93204b508b3a693,
         type: 3}
       propertyPath: stabSoundHeavy
-      value: 
+      value:
       objectReference: {fileID: 983899916}
     - target: {fileID: 6509460014752930161, guid: 7b101977e5e17ac4d93204b508b3a693,
         type: 3}
       propertyPath: drillSoundShort
-      value: 
+      value:
       objectReference: {fileID: 930180861}
     - target: {fileID: 6509460014752930161, guid: 7b101977e5e17ac4d93204b508b3a693,
         type: 3}
       propertyPath: drillSoundMedium
-      value: 
+      value:
       objectReference: {fileID: 1966147712}
     - target: {fileID: 6509460014752930161, guid: 7b101977e5e17ac4d93204b508b3a693,
         type: 3}
       propertyPath: drillSoundLong
-      value: 
+      value:
       objectReference: {fileID: 478836077}
     - target: {fileID: 6509460014752930163, guid: 7b101977e5e17ac4d93204b508b3a693,
         type: 3}
@@ -4639,7 +4639,7 @@ PrefabInstance:
     - target: {fileID: 6016482973291940084, guid: 99daa2ba60171153688f3e1f04e8728c,
         type: 3}
       propertyPath: otherPlayer
-      value: 
+      value:
       objectReference: {fileID: 1562597792}
     - target: {fileID: 6016482973291940086, guid: 99daa2ba60171153688f3e1f04e8728c,
         type: 3}
@@ -4700,6 +4700,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: player 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6016482973291940089, guid: 99daa2ba60171153688f3e1f04e8728c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99daa2ba60171153688f3e1f04e8728c, type: 3}
@@ -4768,8 +4773,13 @@ PrefabInstance:
     - target: {fileID: 6346046949185483811, guid: d7350d954896724958f69a2aa166bcae,
         type: 3}
       propertyPath: otherPlayer
-      value: 
+      value:
       objectReference: {fileID: 1538372323}
+    - target: {fileID: 6346046949185483822, guid: d7350d954896724958f69a2aa166bcae,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6346046949185483823, guid: d7350d954896724958f69a2aa166bcae,
         type: 3}
       propertyPath: m_Name
