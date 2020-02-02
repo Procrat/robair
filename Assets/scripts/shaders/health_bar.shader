@@ -1,4 +1,4 @@
-﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 
 // Shader HealthBar_BW use for Black and White gradient mask texture
 Shader "Custom/HealthBar"
@@ -20,6 +20,8 @@ Shader "Custom/HealthBar"
 
             sampler2D _MainTex;
             float _Percent;
+            float y_pos;
+            float _height;
 
             struct vertexInput
             {
@@ -30,7 +32,7 @@ Shader "Custom/HealthBar"
 
             struct vertexOutput
             {
-                float4 pos : SV_POSITION;
+                float4 pos : POSITION;
                 float4 color : COLOR;
                 float2 texcoord : TEXCOORD0;
             };
@@ -41,6 +43,7 @@ Shader "Custom/HealthBar"
                 UNITY_INITIALIZE_OUTPUT(vertexOutput, o);
 
                 o.pos = UnityObjectToClipPos(i.vertex);
+                //_height = height_coords.y;
                 o.texcoord = i.texcoord;
 
                 return o;
@@ -49,25 +52,33 @@ Shader "Custom/HealthBar"
             fixed4 frag (vertexOutput i) : COLOR
             {
                 fixed4 mainTex = tex2D(_MainTex, i.texcoord);
-                //LOL
 
-                if(_Percent <= 0.65)
+                if(i.texcoord.y <= _Percent)
                 {
-                    mainTex.r = 1;
-                    mainTex.g = 0.949;
-                    mainTex.b = 0;
+                    if(_Percent <= 0.65)
+                    {
+                        mainTex.r = 1;
+                        mainTex.g = 0.949;
+                        mainTex.b = 0;
+                    }
+                    if(_Percent <= 0.45)
+                    {
+                        mainTex.r = 1;
+                        mainTex.g = 0.698;
+                        mainTex.b = 0.4;
+                    }
+                    if(_Percent <= 0.25)
+                    {
+                        mainTex.r = 1;
+                        mainTex.g = 0;
+                        mainTex.b = 0;
+                    }
                 }
-                if(_Percent <= 0.45)
+                else
                 {
-                    mainTex.r = 1;
-                    mainTex.g = 0.698;
-                    mainTex.b = 0.4;
-                }
-                if(_Percent <= 0.25)
-                {
-                    mainTex.r = 1;
-                    mainTex.g = 0;
-                    mainTex.b = 0;
+                    mainTex.r = 0.109;
+                    mainTex.g = 0.168;
+                    mainTex.b = 0.2;
                 }
                 return mainTex;
             }
