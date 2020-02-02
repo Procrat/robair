@@ -109,36 +109,10 @@ public class Player : MonoBehaviour
                 lookingRight = movementInput.x > 0;
             }
             spriteRenderer.flipX = !lookingRight;
+            var healthBarTx = healthBar.transform;
+            healthBarTx.localPosition = new Vector2(Mathf.Abs(healthBarTx.localPosition.x) * (lookingRight ? -1 : 1), healthBarTx.localPosition.y);
         }
-
-        //Move(PlayerInput.actions["Move"].ReadValue<Vector2>());
-
-        //if (Input.GetKey (KeyCode.Escape) || Input.GetKey (KeyCode.Q)) {
-        //    Debug.Log ("Quitting.");
-        //    Application.Quit ();
-        //}
-
-
-        //if (Input.GetKey (right)) {
-        //    MoveRight ();
-        //} else if (Input.GetKey (left)) {
-        //    MoveLeft ();
-        //}
-
-        //if (Input.GetKey (jump)) {
-        //    Jump ();
-        //}
     }
-
-    //private void MoveLeft ()
-    //{
-    //    Move (Vector2.left);
-    //}
-
-    //private void MoveRight ()
-    //{
-    //    Move (Vector2.right);
-    //}
 
     private void Move (Vector2 translationVector)
     {
@@ -150,11 +124,6 @@ public class Player : MonoBehaviour
         if (isGrounded ()) {
             body.velocity = jumpSpeed * Vector2.up;
             animator.SetTrigger("JumpNow");
-
-
-            //animator.SetTrigger("JumpEnd");
-
-
         }
     }
 
