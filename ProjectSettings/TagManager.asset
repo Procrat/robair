@@ -10,6 +10,7 @@ TagManager:
   - StabEnemy
   - Water
   - Spike
+  - PlayerRepairZone
   layers:
   - Default
   - TransparentFX
