@@ -28,7 +28,8 @@ public class Player : MonoBehaviour
     private Vector2 movementInput;
     private bool lockMovement;
     private bool canRepair;
-    private GameObject enemy;
+    private bool isRepairingFriend;
+    private GameObject collidedObject;
 
     private SpriteRenderer spriteRenderer;
 
@@ -54,26 +55,42 @@ public class Player : MonoBehaviour
         }
         else if (other.tag == "Enemy")
         {
-            enemy = other.gameObject;
+            collidedObject = other.gameObject;
 
             if (other.gameObject.transform.position.x > this.gameObject.transform.position.x)
             {
-                Debug.Log("Enemy caused damage");
+                //Debug.Log("Enemy caused damage");
                 takeDamage(enemyDamage);
                 canRepair = false;
             }
             else
             {
-                Debug.Log("Can repair now");
+                //Debug.Log("Can repair now");
                 canRepair = isGrounded() ? true : false;
             }
+        }
+        else if (other.tag == "Player")
+        {
+            //Debug.Log("Player can repair friend");
+            canRepair = true;
+            isRepairingFriend = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        enemy = null;
-        canRepair = false;
+        collidedObject = null;
+
+        // Using the tag method.
+        if (other.tag == "Enemy")
+        {
+            canRepair = false;
+        }
+        else if (other.tag == "Player")
+        {
+            canRepair = false;
+            isRepairingFriend = false;
+        }
     }
 
     void Start ()
@@ -169,20 +186,28 @@ public class Player : MonoBehaviour
         Jump();
     }
 
+    public void RepairHealth()
+    {
+        healthBar.repairHealth();
+        otherPlayer.healthBar.repairHealth();
+    }
+
     private void OnRepair(InputValue value)
     {
-        if (canRepair && enemy != null) StartCoroutine(HandleRepair());
-        //animator.Play("repair-start");
-        // TODO: actually do something
-        // TODO: Don't forget to play "repair-end" animation afterwards
+        if (canRepair) StartCoroutine(HandleRepair());
     }
 
     IEnumerator HandleRepair()
     {
-        Debug.Log("HandleRepair");
+        //Debug.Log("HandleRepair");
 
         lockMovement = true;
-        enemy.GetComponentInParent<EnemyBase>().RepairMe();
+        if (isRepairingFriend)
+        {
+            //Debug.Log("Repairing Ourself!");
+            RepairHealth();
+        }
+        else collidedObject.GetComponentInParent<EnemyBase>().RepairMe();
 
         animator.Play("repair-start");
         yield return new WaitForSeconds(1);

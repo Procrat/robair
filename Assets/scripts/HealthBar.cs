@@ -31,6 +31,11 @@ public class HealthBar : MonoBehaviour
         health -= sub;
     }
 
+    public void repairHealth()
+    {
+        health = 1;
+    }
+
     public float GetHealth()
     {
         return health;
