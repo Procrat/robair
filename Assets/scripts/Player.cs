@@ -189,8 +189,8 @@ public class Player : MonoBehaviour
     private bool isGrounded ()
     {
         var feetRect = new Rect (feet.transform.position.x, feet.transform.position.y, feetWidth, 0.1f);
-        return Physics2D.OverlapArea (feetRect.min, feetRect.max, whatIsGround);
-        
+        var feetCollisions = Physics2D.OverlapAreaAll (feetRect.min, feetRect.max, whatIsGround);
+        return feetCollisions.Length > 1;  // The player itself is always colliding
     }
 
     // New Input System: OnMove message
