@@ -8,7 +8,7 @@ public class MainCamera : MonoBehaviour
     public GameObject player2;
     public Vector2 lowerLeftCorner;
 
-    private Camera camera;
+    private new Camera camera;
 
     void Start()
     {
