@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
 
     public void takeDamage(float damage)
     {
+        AudioManager.Instance.PlayStabSoundHeavy();
         if (healthBar.GetHealth() <= 0) {
             return;
         }
@@ -140,6 +141,7 @@ public class Player : MonoBehaviour
 
     private void Die ()
     {
+        AudioManager.Instance.PlayHealthDownSound();
         animator.Play("death-start");
         // Load start screen after delay
         StartCoroutine(RestartAfterDelay());
