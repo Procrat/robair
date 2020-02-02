@@ -2022,7 +2022,7 @@ Transform:
   - {fileID: 976345552}
   - {fileID: 559655388}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1324288016
 PrefabInstance:
@@ -2747,6 +2747,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6509460014752930163, guid: 7b101977e5e17ac4d93204b508b3a693,
+        type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6509460014752930167, guid: 7b101977e5e17ac4d93204b508b3a693,
         type: 3}
       propertyPath: m_Name
@@ -2938,7 +2943,7 @@ Transform:
   - {fileID: 4764952584562404734}
   - {fileID: 4764952584732408435}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &4764952584562404672
 TilemapRenderer:
