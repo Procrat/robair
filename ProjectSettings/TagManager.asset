@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - LaserEnemy
   - StabEnemy
+  - Water
   layers:
   - Default
   - TransparentFX

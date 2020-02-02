@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     private Animator animator;
     private float laserDamage = 0.15f;
     private float enemyDamage = 0.25f;
+    private float waterDamage = 0.35f;
 
     private Vector2 movementInput;
     private bool lockMovement;
@@ -67,6 +68,9 @@ public class Player : MonoBehaviour
                 Debug.Log("Can repair now");
                 canRepair = isGrounded() ? true : false;
             }
+        }
+        else if (other.tag == "Water") {
+            takeDamage(waterDamage);
         }
     }
 
