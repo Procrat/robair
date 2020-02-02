@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public KeyCode jump;
 
     private Rigidbody2D body;
+    private Animator animator;
     private float laserDamage = 0.15f;
     private float enemyDamage = 0.25f;
 
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour
     void Start ()
     {
         body = GetComponent<Rigidbody2D> ();
+        animator = GetComponent<Animator>();
     }
 
     void FixedUpdate ()
@@ -111,5 +113,12 @@ public class Player : MonoBehaviour
     private void OnJump(InputValue value)
     {
         Jump();
+    }
+
+    private void OnRepair(InputValue value)
+    {
+        animator.Play("repair-start");
+        // TODO: actually do something
+        // TODO: Don't forget to play "repair-end" animation afterwards
     }
 }
