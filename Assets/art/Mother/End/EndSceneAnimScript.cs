@@ -39,13 +39,23 @@ public class EndSceneAnimScript : MonoBehaviour{
 
 
     void Update(){
+      /*
       if(EndofScenereached){
         if (Input.GetKeyDown(KeyCode.Space)){
           SceneManager.LoadScene("StartScene");
         }
       }
-
+      */
     }
+
+
+    void OnChangeScene(){
+      if(EndofScenereached){
+        SceneManager.LoadScene("StartScene");
+      }
+    }
+
+
 
     IEnumerator NextScene(){
       yield return new WaitForSeconds(1);
@@ -75,11 +85,11 @@ public class EndSceneAnimScript : MonoBehaviour{
       yield return new WaitForSeconds(1);
       Scene9.SetActive(false);
       Scene10.SetActive(true);
-      yield return new WaitForSeconds(2);
+      yield return new WaitForSeconds(1);
       Scene10.SetActive(false);
       Scene11.SetActive(true);
       yield return new WaitForSeconds(1);
-      ReplayButton.SetActive(false);
+      ReplayButton.SetActive(true);
       EndofScenereached = true;
 
     }

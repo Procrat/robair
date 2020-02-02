@@ -9,10 +9,8 @@ public class StartGameScript : MonoBehaviour{
 
     }
 
-    // Update is called once per frame
-    void Update(){
-      if (Input.GetKeyDown(KeyCode.Space)){
+    void OnChangeScene(){
         SceneManager.LoadScene("main");
-      }
+      
     }
 }
