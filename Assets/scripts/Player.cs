@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     private Animator animator;
     private float laserDamage = 0.15f;
     private float enemyDamage = 0.25f;
+    private float waterDamage = 0.35f;
 
     private Vector2 movementInput;
     private bool lockMovement;
@@ -36,6 +37,7 @@ public class Player : MonoBehaviour
 
     public void takeDamage(float damage)
     {
+        AudioManager.Instance.PlayStabSoundHeavy();
         if (healthBar.GetHealth() <= 0) {
             return;
         }
@@ -74,6 +76,9 @@ public class Player : MonoBehaviour
             //Debug.Log("Player can repair friend");
             canRepair = true;
             isRepairingFriend = true;
+        }
+        else if (other.tag == "Water") {
+            takeDamage(waterDamage);
         }
     }
 
@@ -157,7 +162,9 @@ public class Player : MonoBehaviour
 
     private void Die ()
     {
+        AudioManager.Instance.PlayHealthDownSound();
         animator.Play("death-start");
+        AudioManager.Instance.PlayHealthDownSound();
         // Load start screen after delay
         StartCoroutine(RestartAfterDelay());
     }
@@ -178,6 +185,11 @@ public class Player : MonoBehaviour
     private void OnMove(InputValue value)
     {
         movementInput = value.Get<Vector2>();
+        animator.SetBool("IsRunning", true);
+
+        if(movementInput.magnitude == 0){
+          animator.SetBool("IsRunning", false);
+        }
     }
 
     // New Input System: OnJump message
@@ -210,6 +222,8 @@ public class Player : MonoBehaviour
         else collidedObject.GetComponentInParent<EnemyBase>().RepairMe();
 
         animator.Play("repair-start");
+        AudioManager.Instance.PlayHealthUpSound1();
+        AudioManager.Instance.PlayDrillSoundMedium();
         yield return new WaitForSeconds(1);
 
         animator.Play("repair-end");

@@ -5,17 +5,17 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour
 {
     protected bool isRepaired;
-    private Animator animator;
+    protected Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
+        //animator = gameObject.GetComponent<Animator>();
     }
 
     public void RepairMe()
     {
-        //animator.Play("do-repair");
+        animator.SetTrigger("EnemyRepaired");
         isRepaired = true;
     }
 }

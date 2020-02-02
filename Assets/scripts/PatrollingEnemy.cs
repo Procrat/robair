@@ -33,6 +33,8 @@ public class PatrollingEnemy : EnemyBase {
         rightSpeed = new Vector2(speed, 0.0f);
 
         createMovementPattern();
+
+        animator = gameObject.GetComponent<Animator>();
     }
 
     private bool isGrounded ()
@@ -76,11 +78,12 @@ public class PatrollingEnemy : EnemyBase {
     void Update () {
         if (isRepaired)
         {
+
             //Debug.Log("PatrollingEnemy dead");
             return;
         }
 
-        
+
         if (!isGrounded()) {
             count = 0;
             duration = 0;
