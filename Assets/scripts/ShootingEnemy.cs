@@ -46,6 +46,8 @@ public class ShootingEnemy : MonoBehaviour {
         Rigidbody2D projectileInstance;
         projectileInstance = Instantiate(projectile, Launcher.position, Launcher.rotation) as Rigidbody2D;
         projectileInstance.velocity = Vector2.left * projectileSpeed;
+
+        AudioManager.Instance.PlayLaserSound();
     }
 
     // Update is called once per frame

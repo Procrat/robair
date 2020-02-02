@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager Instance;
+
     public AudioSource healthUpSound1;
     public AudioSource healthUpSound2;
     public AudioSource healthDownSound;
@@ -17,6 +19,19 @@ public class AudioManager : MonoBehaviour
     public AudioSource drillSoundMedium;
     public AudioSource drillSoundLong;
 
+
+    public void Awake()
+    {
+        // There should only ever be one instance of this.
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            GameObject.Destroy(this);
+        }
+    }
 
     // If you want to test the sounds, uncomment this update method.
 
