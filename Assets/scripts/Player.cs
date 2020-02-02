@@ -157,6 +157,12 @@ public class Player : MonoBehaviour
     {
         if (isGrounded ()) {
             body.velocity = jumpSpeed * Vector2.up;
+            animator.SetTrigger("JumpNow");
+
+
+            //animator.SetTrigger("JumpEnd");
+
+
         }
     }
 
@@ -179,6 +185,7 @@ public class Player : MonoBehaviour
     {
         var feetRect = new Rect (feet.transform.position.x, feet.transform.position.y, feetWidth, 0.1f);
         return Physics2D.OverlapArea (feetRect.min, feetRect.max, whatIsGround);
+        
     }
 
     // New Input System: OnMove message
