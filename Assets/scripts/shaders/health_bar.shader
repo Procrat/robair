@@ -1,4 +1,6 @@
-﻿// Shader HealthBar_BW use for Black and White gradient mask texture
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+// Shader HealthBar_BW use for Black and White gradient mask texture
 Shader "Custom/HealthBar"
 {
     Properties
@@ -47,6 +49,7 @@ Shader "Custom/HealthBar"
             fixed4 frag (vertexOutput i) : COLOR
             {
                 fixed4 mainTex = tex2D(_MainTex, i.texcoord);
+                //LOL
 
                 if(_Percent <= 0.65)
                 {
@@ -66,7 +69,6 @@ Shader "Custom/HealthBar"
                     mainTex.g = 0;
                     mainTex.b = 0;
                 }
-
                 return mainTex;
             }
 
