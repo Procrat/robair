@@ -75,7 +75,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 6.07, y: 4.09}
+  m_Size: {x: 3.82, y: 2.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -197,7 +197,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2117614357
-  m_SortingLayer: -2
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: -2849556806291853808, guid: f27e262b779054d5ea3909176db7592f,
     type: 3}
@@ -248,7 +248,7 @@ MonoBehaviour:
   jumpSpeed: 6
   feetWidth: 0.4
   feet: {fileID: 3892233485206410741}
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 527430254}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
