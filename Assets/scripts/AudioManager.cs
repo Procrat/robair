@@ -37,6 +37,7 @@ public class AudioManager : MonoBehaviour
         if (Input.GetKeyDown("4"))
         {
             PlayLaserSound();
+            Debug.LogError("test");
         }
         if (Input.GetKeyDown("5"))
         {
