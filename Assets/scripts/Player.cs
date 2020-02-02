@@ -22,7 +22,6 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D body;
     private Animator animator;
-    private float laserDamage = 0.15f;
     private float enemyDamage = 0.25f;
     private float waterDamage = 0.35f;
 
@@ -52,29 +51,18 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D (Collider2D other) {
 
         // Using the tag method.
-        if (other.tag == "Projectile") {
-            //Debug.Log("Hit by laser)");
-            takeDamage(laserDamage);
-        }
-        else if (other.tag == "Enemy")
+        if (other.tag == "Enemy")
         {
             collidedObject = other.gameObject;
+            canRepair = true;
 
-            if (other.gameObject.transform.position.x > this.gameObject.transform.position.x)
-            {
-                //Debug.Log("Enemy caused damage");
-                takeDamage(enemyDamage);
-                canRepair = false;
-            }
-            else
-            {
-                //Debug.Log("Can repair now");
-                canRepair = isGrounded() ? true : false;
-            }
         }
-        else if (other.tag == "Player")
+        else if (other.tag == "Spike")
         {
-            //Debug.Log("Player can repair friend");
+            takeDamage(enemyDamage);
+        }
+        else if (other.tag == "PlayerRepairZone")
+        {
             canRepair = true;
             isRepairingFriend = true;
         }
@@ -85,14 +73,13 @@ public class Player : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        collidedObject = null;
-
         // Using the tag method.
         if (other.tag == "Enemy")
         {
             canRepair = false;
+            collidedObject = null;
         }
-        else if (other.tag == "Player")
+        else if (other.tag == "PlayerRepairZone")
         {
             canRepair = false;
             isRepairingFriend = false;
@@ -197,11 +184,7 @@ public class Player : MonoBehaviour
     private void OnMove(InputValue value)
     {
         movementInput = value.Get<Vector2>();
-        animator.SetBool("IsRunning", true);
-
-        if(movementInput.magnitude == 0){
-          animator.SetBool("IsRunning", false);
-        }
+        animator.SetBool("IsRunning", movementInput.magnitude != 0);
     }
 
     // New Input System: OnJump message
@@ -223,16 +206,19 @@ public class Player : MonoBehaviour
 
     IEnumerator HandleRepair()
     {
-        //Debug.Log("HandleRepair");
+        if (!isGrounded()) yield break;
 
-        lockMovement = true;
         if (isRepairingFriend)
         {
-            //Debug.Log("Repairing Ourself!");
             RepairHealth();
+        } else if (collidedObject.transform.position.x < transform.position.x)
+        {
+            collidedObject.GetComponentInParent<EnemyBase>().RepairMe();
+        } else {
+            yield break;
         }
-        else collidedObject.GetComponentInParent<EnemyBase>().RepairMe();
 
+        lockMovement = true;
         animator.Play("repair-start");
         AudioManager.Instance.PlayHealthUpSound1();
         AudioManager.Instance.PlayDrillSoundMedium();

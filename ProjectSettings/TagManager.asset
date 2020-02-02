@@ -9,6 +9,7 @@ TagManager:
   - LaserEnemy
   - StabEnemy
   - Water
+  - Spike
   layers:
   - Default
   - TransparentFX

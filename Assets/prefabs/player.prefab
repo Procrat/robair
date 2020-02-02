@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8874909391968486482}
   m_Layer: 0
   m_Name: repairZone
-  m_TagString: Player
+  m_TagString: PlayerRepairZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

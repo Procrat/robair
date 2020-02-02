@@ -44,8 +44,8 @@ public class ShootingEnemy : EnemyBase {
 
     private void Shoot()
     {
-        Rigidbody2D projectileInstance;
-        projectileInstance = Instantiate(projectile, Launcher.position, Launcher.rotation) as Rigidbody2D;
+        var spawnPoint = transform.Find("laserSpawnPoint");
+        Rigidbody2D projectileInstance = Instantiate(projectile, spawnPoint) as Rigidbody2D;
         projectileInstance.velocity = Vector2.left * projectileSpeed;
 
         AudioManager.Instance.PlayLaserSound();

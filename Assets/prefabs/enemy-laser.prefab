@@ -64,6 +64,7 @@ Transform:
   m_Children:
   - {fileID: 162330944352329122}
   - {fileID: 7646242145005820928}
+  - {fileID: 4568745167342546495}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -102,8 +103,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2117614357
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 2914157968104379755, guid: 92b7d66f5aa5474d6a64d10ff1262070,
     type: 3}
@@ -133,7 +134,7 @@ MonoBehaviour:
     type: 3}
   Launcher: {fileID: 162330945332489696}
   projectileInterval: 1
-  projectileSpeed: {x: 5, y: 0}
+  projectileSpeed: {x: 9.99, y: 0}
   jumpSpeed: 5
   jumpProb: 1
   whatIsGround:
@@ -264,3 +265,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.72, y: 0.58}
   m_EdgeRadius: 0
+--- !u!1 &7155060966111207842
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4568745167342546495}
+  m_Layer: 9
+  m_Name: laserSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4568745167342546495
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7155060966111207842}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.192, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 162330945332489696}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
