@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     private bool canRepair;
     private bool isRepairingFriend;
     private GameObject collidedObject;
+    private bool lookingRight;
 
     private SpriteRenderer spriteRenderer;
 
@@ -103,6 +104,7 @@ public class Player : MonoBehaviour
         body = GetComponent<Rigidbody2D> ();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        lookingRight = true;
     }
 
     void FixedUpdate ()
@@ -116,7 +118,10 @@ public class Player : MonoBehaviour
         {
             Move(new Vector2(movementInput.x, 0));
 
-            spriteRenderer.flipX = movementInput.x < 0 ? true : false;
+            if (movementInput.x != 0) {
+                lookingRight = movementInput.x > 0;
+            }
+            spriteRenderer.flipX = !lookingRight;
         }
 
         //Move(PlayerInput.actions["Move"].ReadValue<Vector2>());
