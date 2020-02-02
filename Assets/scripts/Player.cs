@@ -141,6 +141,7 @@ public class Player : MonoBehaviour
     private void Die ()
     {
         animator.Play("death-start");
+        AudioManager.Instance.PlayHealthDownSound();
         // Load start screen after delay
         StartCoroutine(RestartAfterDelay());
     }
@@ -185,6 +186,8 @@ public class Player : MonoBehaviour
         enemy.GetComponentInParent<EnemyBase>().RepairMe();
 
         animator.Play("repair-start");
+        AudioManager.Instance.PlayHealthUpSound1();
+        AudioManager.Instance.PlayDrillSoundMedium();
         yield return new WaitForSeconds(1);
 
         animator.Play("repair-end");
