@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class ShootingEnemy : MonoBehaviour {
+public class ShootingEnemy : EnemyBase {
 
     private Rigidbody2D body;
     public Rigidbody2D projectile;
@@ -52,6 +52,12 @@ public class ShootingEnemy : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate () {
+        if (isRepaired)
+        {
+            //Debug.Log("ShootingEnemy dead");
+            return;
+        }
+
         float randJump = Random.Range(0.0f, 1.0f);
         if(randJump < jumpProb)
         {

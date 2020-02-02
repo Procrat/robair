@@ -57,6 +57,14 @@ public class @RobairControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ChangeScene"",
+                    ""type"": ""Button"",
+                    ""id"": ""d8701918-0759-486f-943b-2ce5279e259d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -321,6 +329,17 @@ public class @RobairControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Repair"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fcf563ca-e2fe-4408-ac25-fae8d38d50e5"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""ChangeScene"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -900,6 +919,7 @@ public class @RobairControls : IInputActionCollection, IDisposable
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Repair = m_Player.FindAction("Repair", throwIfNotFound: true);
+        m_Player_ChangeScene = m_Player.FindAction("ChangeScene", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -967,6 +987,7 @@ public class @RobairControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Repair;
+    private readonly InputAction m_Player_ChangeScene;
     public struct PlayerActions
     {
         private @RobairControls m_Wrapper;
@@ -976,6 +997,7 @@ public class @RobairControls : IInputActionCollection, IDisposable
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Repair => m_Wrapper.m_Player_Repair;
+        public InputAction @ChangeScene => m_Wrapper.m_Player_ChangeScene;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1000,6 +1022,9 @@ public class @RobairControls : IInputActionCollection, IDisposable
                 @Repair.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRepair;
                 @Repair.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRepair;
                 @Repair.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRepair;
+                @ChangeScene.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeScene;
+                @ChangeScene.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeScene;
+                @ChangeScene.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeScene;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1019,6 +1044,9 @@ public class @RobairControls : IInputActionCollection, IDisposable
                 @Repair.started += instance.OnRepair;
                 @Repair.performed += instance.OnRepair;
                 @Repair.canceled += instance.OnRepair;
+                @ChangeScene.started += instance.OnChangeScene;
+                @ChangeScene.performed += instance.OnChangeScene;
+                @ChangeScene.canceled += instance.OnChangeScene;
             }
         }
     }
@@ -1188,6 +1216,7 @@ public class @RobairControls : IInputActionCollection, IDisposable
         void OnFire(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnRepair(InputAction.CallbackContext context);
+        void OnChangeScene(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

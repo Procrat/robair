@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class PatrollingEnemy : MonoBehaviour {
+public class PatrollingEnemy : EnemyBase {
 
     private Rigidbody2D body;
 
@@ -74,6 +74,13 @@ public class PatrollingEnemy : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        if (isRepaired)
+        {
+            //Debug.Log("PatrollingEnemy dead");
+            return;
+        }
+
+        
         if (!isGrounded()) {
             count = 0;
             duration = 0;

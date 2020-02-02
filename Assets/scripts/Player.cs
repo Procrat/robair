@@ -23,28 +23,55 @@ public class Player : MonoBehaviour
     private float enemyDamage = 0.25f;
 
     private Vector2 movementInput;
+    private bool lockMovement;
+    private bool canRepair;
+    private GameObject enemy;
+
+    private SpriteRenderer spriteRenderer;
 
 
     public void takeDamage(float damage)
     {
-        healthBar.subtractHealth(damage);
+        //healthBar.subtractHealth(damage);
     }
 
     private void OnTriggerEnter2D (Collider2D other) {
-     // Using the tag method.
-     if (other.tag == "Projectile") {
-         takeDamage(laserDamage);
-     }
-     else if(other.tag == "Enemy")
-     {
-         takeDamage(enemyDamage);
-     }
+
+        // Using the tag method.
+        if (other.tag == "Projectile") {
+            //Debug.Log("Hit by laser)");
+            takeDamage(laserDamage);
+        }
+        else if (other.tag == "Enemy")
+        {
+            enemy = other.gameObject;
+
+            if (other.gameObject.transform.position.x > this.gameObject.transform.position.x)
+            {
+                Debug.Log("Enemy caused damage");
+                takeDamage(enemyDamage);
+                canRepair = false;
+            }
+            else
+            {
+                Debug.Log("Can repair now");
+                canRepair = true;
+                //canRepair = isGrounded() ? true : false;
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        enemy = null;
+        canRepair = false;
     }
 
     void Start ()
     {
         body = GetComponent<Rigidbody2D> ();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void FixedUpdate ()
@@ -54,7 +81,12 @@ public class Player : MonoBehaviour
 
     private void HandleInput ()
     {
-        Move(new Vector2(movementInput.x, 0));
+        if (!lockMovement)
+        {
+            Move(new Vector2(movementInput.x, 0));
+
+            spriteRenderer.flipX = movementInput.x < 0 ? true : false;
+        }
 
         //Move(PlayerInput.actions["Move"].ReadValue<Vector2>());
 
@@ -117,8 +149,23 @@ public class Player : MonoBehaviour
 
     private void OnRepair(InputValue value)
     {
-        animator.Play("repair-start");
+        if (canRepair && enemy != null) StartCoroutine(HandleRepair());
+        //animator.Play("repair-start");
         // TODO: actually do something
         // TODO: Don't forget to play "repair-end" animation afterwards
+    }
+
+    IEnumerator HandleRepair()
+    {
+        Debug.Log("HandleRepair");
+
+        lockMovement = true;
+        enemy.GetComponentInParent<EnemyBase>().RepairMe();
+
+        animator.Play("repair-start");
+        yield return new WaitForSeconds(1);
+
+        animator.Play("repair-end");
+        lockMovement = false;
     }
 }
