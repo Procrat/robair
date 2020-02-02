@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+
 
 public class Player : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class Player : MonoBehaviour
     public GameObject feet;
     public HealthBar healthBar;
     public LayerMask whatIsGround;
+    public Player otherPlayer;
 
     public KeyCode left;
     public KeyCode right;
@@ -32,7 +35,14 @@ public class Player : MonoBehaviour
 
     public void takeDamage(float damage)
     {
-        //healthBar.subtractHealth(damage);
+        if (healthBar.GetHealth() <= 0) {
+            return;
+        }
+        healthBar.subtractHealth(damage);
+        otherPlayer.healthBar.subtractHealth(damage);
+        if (healthBar.GetHealth() <= 0) {
+            Die ();
+        }
     }
 
     private void OnTriggerEnter2D (Collider2D other) {
@@ -55,8 +65,7 @@ public class Player : MonoBehaviour
             else
             {
                 Debug.Log("Can repair now");
-                canRepair = true;
-                //canRepair = isGrounded() ? true : false;
+                canRepair = isGrounded() ? true : false;
             }
         }
     }
@@ -127,6 +136,19 @@ public class Player : MonoBehaviour
         if (isGrounded ()) {
             body.velocity = jumpSpeed * Vector2.up;
         }
+    }
+
+    private void Die ()
+    {
+        animator.Play("death-start");
+        // Load start screen after delay
+        StartCoroutine(RestartAfterDelay());
+    }
+
+    IEnumerator RestartAfterDelay ()
+    {
+        yield return new WaitForSeconds (1);
+        SceneManager.LoadScene ("StartScene");
     }
 
     private bool isGrounded ()

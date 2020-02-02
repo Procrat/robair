@@ -30,4 +30,9 @@ public class HealthBar : MonoBehaviour
     {
         health -= sub;
     }
+
+    public float GetHealth()
+    {
+        return health;
+    }
 }

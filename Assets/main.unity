@@ -2439,6 +2439,18 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 1512321300}
+--- !u!114 &1538372323 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6016482973291940084, guid: 99daa2ba60171153688f3e1f04e8728c,
+    type: 3}
+  m_PrefabInstance: {fileID: 7313048480236446488}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538372319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f1f12299586fd67b96c6e6b79f339b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1562597788 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6346046949185483823, guid: d7350d954896724958f69a2aa166bcae,
@@ -2476,6 +2488,18 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 1512321300}
+--- !u!114 &1562597792 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6346046949185483811, guid: d7350d954896724958f69a2aa166bcae,
+    type: 3}
+  m_PrefabInstance: {fileID: 7931487277708258212}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562597788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f1f12299586fd67b96c6e6b79f339b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1623224315
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4671,6 +4695,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6016482973291940084, guid: 99daa2ba60171153688f3e1f04e8728c,
+        type: 3}
+      propertyPath: otherPlayer
+      value: 
+      objectReference: {fileID: 1562597792}
     - target: {fileID: 6016482973291940086, guid: 99daa2ba60171153688f3e1f04e8728c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4795,6 +4824,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6346046949185483811, guid: d7350d954896724958f69a2aa166bcae,
+        type: 3}
+      propertyPath: otherPlayer
+      value: 
+      objectReference: {fileID: 1538372323}
     - target: {fileID: 6346046949185483823, guid: d7350d954896724958f69a2aa166bcae,
         type: 3}
       propertyPath: m_Name
